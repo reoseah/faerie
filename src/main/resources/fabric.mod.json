@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "faerie",
+  "version": "${version}",
+  "name": "Faerie",
+  "description": "open world puzzle something",
+  "authors": [
+    "reoseah"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/reoseah/faerie"
+  },
+  "license": "CC0-1.0",
+  "icon": "assets/faerie/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "io.github.reoseah.faerie.Faerie"
+    ],
+    "client": [
+      "io.github.reoseah.faerie.Faerie"
+    ]
+  },
+  "mixins": [
+    "faerie.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.11",
+    "minecraft": "~1.21-",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+  }
+}
