@@ -1,0 +1,7 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "top": "faerie:block/wind",
+    "bottom": "faerie:block/wind_vertical"
+  }
+}

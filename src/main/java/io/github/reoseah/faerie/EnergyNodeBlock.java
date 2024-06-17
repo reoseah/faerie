@@ -5,10 +5,11 @@ import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.block.*;
 import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.entity.BlockEntityTicker;
+import net.minecraft.block.entity.BlockEntityType;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.random.Random;
@@ -39,10 +40,14 @@ public class EnergyNodeBlock extends BlockWithEntity {
         return new EnergyNodeBlockEntity(pos, state);
     }
 
-    @Environment(EnvType.CLIENT)
+    @Nullable
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(World world, BlockState state, BlockEntityType<T> type) {
+        return validateTicker(type, EnergyNodeBlockEntity.TYPE, world.isClient ? EnergyNodeBlockEntity::clientTick : EnergyNodeBlockEntity::serverTick);
+    }
+
     @Override
     protected VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
-        if (MinecraftClient.getInstance().player != null && MinecraftClient.getInstance().player.isCreative()) {
+        if (context.isHolding(ITEM)) {
             return VoxelShapes.fullCube();
         }
         return VoxelShapes.empty();

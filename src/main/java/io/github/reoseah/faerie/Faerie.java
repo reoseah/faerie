@@ -28,7 +28,7 @@ public class Faerie implements ModInitializer, ClientModInitializer {
     public static final ItemGroup ITEM_GROUP = FabricItemGroup.builder()
             .icon(() -> new ItemStack(Faerie.ENERGY))
             .displayName(Text.translatable("itemGroup.faerie"))
-            .entries((displayContext, entries) -> {
+            .entries((context, entries) -> {
                 entries.add(new ItemStack(Faerie.ENERGY));
                 entries.add(new ItemStack(EnergyNodeBlock.ITEM));
             })
